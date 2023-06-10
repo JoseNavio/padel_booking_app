@@ -4,4 +4,11 @@
     <string name="fragment_menu_subtitle">Menu principal</string>
     <string name="fragment_booking_subtitle">Reservar pistas</string>
     <string name="fragment_list_subtitle">"Listado de reservas"</string>
+    <string name="name">Nombre</string>
+    <string name="booking">Reserva</string>
+    <string name="phone">Teléfono</string>
+    <string name="date">Fecha</string>
+    <string name="comment">Comentarios</string>
+    <string name="confirm">Confirmar</string>
+    <string name="hour">Hora</string>
 </resources>
