@@ -34,9 +34,16 @@ class FragmentList : Fragment() {
         return binding.root
     }
 
+
     //Sets buttons to move between fragments
     private fun setButtons() {
 
+        binding.buttonSearch.setOnClickListener {  }
+        binding.buttonModify.setOnClickListener {  }
+        binding.buttonDelete.setOnClickListener {  }
+        binding.buttonBack.setOnClickListener {
+            requireActivity().onBackPressedDispatcher.onBackPressed()
+        }
     }
 
     companion object {

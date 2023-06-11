@@ -34,7 +34,7 @@
             android:text="@string/name" />
 
         <EditText
-            android:id="@+id/field_booking_name"
+            android:id="@+id/field_name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="12dp"
@@ -144,11 +144,11 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="12dp"
-            android:hint="Merengue, merengue..."
+            android:hint="Pala no tendré, pero el salami te lo llevo bien fresco.\nMerengue, merengue..."
             android:inputType="textMultiLine"
-            android:minLines="4"
-            android:lines="4"
-            android:maxLines="10"
+            android:minLines="2"
+            android:lines="3"
+            android:maxLines="6"
             android:scrollbars="vertical"/>
 
     </LinearLayout>
@@ -172,5 +172,14 @@
 
     </LinearLayout>
 
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/button_back"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:layout_margin="32dp"
+        style="@style/SquareFloatingActionButton"
+        android:src="@drawable/icon_back_24"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/linear_booking_confirm"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
