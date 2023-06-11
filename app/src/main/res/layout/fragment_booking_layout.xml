@@ -8,7 +8,7 @@
         android:id="@+id/label_booking_title"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="12dp"
+        android:layout_margin="@dimen/margin_large"
         android:text="@string/booking"
         android:textAlignment="center"
         android:textSize="@dimen/text_title"

@@ -5,7 +5,7 @@
     <string name="fragment_booking_subtitle">Reservar pistas</string>
     <string name="fragment_list_subtitle">"Listado de reservas"</string>
     <string name="name">Nombre</string>
-    <string name="booking">Reserva</string>
+    <string name="booking">Reservar Pista</string>
     <string name="phone">Teléfono</string>
     <string name="date">Fecha</string>
     <string name="comment">Comentarios</string>
