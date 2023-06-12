@@ -10,7 +10,6 @@ class AdapterBookings(private var bookings: MutableList<Booking>) :
     RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     private var selectedBooking: Int = RecyclerView.NO_POSITION
-    private var lastSelectedBooking: Int = RecyclerView.NO_POSITION
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
 
@@ -34,31 +33,58 @@ class AdapterBookings(private var bookings: MutableList<Booking>) :
         return bookings.size
     }
 
-    fun selectedBooking(callback: OnItemSelected) {
-        //Return the selected position
-        if (selectedBooking != RecyclerView.NO_POSITION) {
-            callback.onItemSelected(selectedBooking)
-            selectedBooking = RecyclerView.NO_POSITION
-        }
-    }
-
     fun updateBookings(updatedBookings: MutableList<Booking>) {
         bookings = updatedBookings
         notifyDataSetChanged()
     }
 
     fun currentSelected(position: Int) {
+
+        val lastSelectedPosition = selectedBooking
+
         selectedBooking = if (selectedBooking == position) {
             RecyclerView.NO_POSITION // Deselect if already selected
         } else {
-            lastSelectedBooking = selectedBooking
             position // Select the newly clicked item
         }
-        notifyItemChanged(lastSelectedBooking) // Refresh the adapter
-        notifyItemChanged(selectedBooking) // Refresh the adapter
+
+        notifyItemChanged(lastSelectedPosition) // Refresh the adapter for the previously selected item
+        notifyItemChanged(selectedBooking) // Refresh the adapter for the currently selected item
+    }
+    //Search
+    fun searchByName(){
+
+    }
+    fun searchByDate(){
+
+    }
+    //Add
+    fun addBooking(booking: Booking){
+        bookings.add(booking)
+        notifyItemChanged(bookings.lastIndex)
+    }
+    //Delete
+    fun deleteCurrentSelected() {
+
+        if (selectedBooking != RecyclerView.NO_POSITION) {
+            bookings.removeAt(selectedBooking)
+            notifyItemRemoved(selectedBooking)
+            selectedBooking = RecyclerView.NO_POSITION
+        }
+    }
+    //Modify
+    fun modifyCurrentSelected() {
+
+        if (selectedBooking != RecyclerView.NO_POSITION) {
+            bookings.set(selectedBooking, Booking("","", "", "", ""))
+            notifyItemChanged(selectedBooking)
+            selectedBooking = RecyclerView.NO_POSITION
+        }
     }
 }
-
 interface OnItemSelected {
     fun onItemSelected(position: Int) {}
+}
+interface OnBookingModified {
+    fun onBookingModified(booking: Booking) {}
 }

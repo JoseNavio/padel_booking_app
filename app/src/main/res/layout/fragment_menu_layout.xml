@@ -44,6 +44,7 @@
             android:layout_width="@dimen/image_button_width"
             android:layout_height="@dimen/image_button_height"
             android:layout_margin="@dimen/margin_medium"
+            android:backgroundTint="@color/purple_200"
             android:src="@drawable/icon_search_24" />
 
         <ImageButton
@@ -51,6 +52,7 @@
             android:layout_width="@dimen/image_button_width"
             android:layout_height="@dimen/image_button_height"
             android:layout_margin="@dimen/margin_medium"
+            android:backgroundTint="@color/purple_200"
             android:src="@drawable/icon_padel_24" />
 
     </LinearLayout>
