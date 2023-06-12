@@ -82,9 +82,3 @@ class AdapterBookings(private var bookings: MutableList<Booking>) :
         }
     }
 }
-interface OnItemSelected {
-    fun onItemSelected(position: Int) {}
-}
-interface OnBookingModified {
-    fun onBookingModified(booking: Booking) {}
-}

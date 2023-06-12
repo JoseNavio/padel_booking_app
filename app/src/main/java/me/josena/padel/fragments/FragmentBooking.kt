@@ -19,6 +19,7 @@ import com.google.android.material.datepicker.CalendarConstraints
 import com.google.android.material.datepicker.MaterialDatePicker
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import me.josena.padel.OnBookingPassed
 import me.josena.padel.R
 import me.josena.padel.data.Booking
 import me.josena.padel.databinding.FragmentBookingLayoutBinding
@@ -26,7 +27,7 @@ import me.josena.padel.utils.CustomDateValidator
 import java.text.SimpleDateFormat
 import java.util.*
 
-class FragmentBooking : Fragment() {
+class FragmentBooking(val bookingListener: OnBookingPassed) : Fragment() {
 
     private lateinit var binding: FragmentBookingLayoutBinding
 
@@ -145,11 +146,12 @@ class FragmentBooking : Fragment() {
         if (name.isNotEmpty() && telephone.isNotEmpty() && date.isNotEmpty() && hour.isNotEmpty()) {
 
             val newBooking = Booking(name, telephone, date, hour, comment)
-            //Insert using Room
-            lifecycleScope.launch(Dispatchers.IO) {
-                //todo Insert into database?
-//                bookingDAO.insertBooking(newBooking)
-            }
+//            //Insert using Room
+//            lifecycleScope.launch(Dispatchers.IO) { }
+
+            //todo Mocked insert
+            bookingListener.onBookingPassed(newBooking)
+
             //Notify
             sendWhatsApp(newBooking.toString())
             resetFields()
@@ -224,6 +226,6 @@ class FragmentBooking : Fragment() {
     }
 
     companion object {
-        fun newInstance() = FragmentBooking()
+        fun newInstance(bookingListener: OnBookingPassed) = FragmentBooking(bookingListener)
     }
 }

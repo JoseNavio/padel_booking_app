@@ -4,7 +4,6 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
@@ -13,16 +12,14 @@ import androidx.recyclerview.widget.RecyclerView
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
+import me.josena.padel.OnBookingAdded
 import me.josena.padel.R
 import me.josena.padel.adapter.AdapterBookings
-import me.josena.padel.adapter.OnBookingModified
 import me.josena.padel.data.Booking
-import me.josena.padel.databinding.FragmentBookingLayoutBinding
 import me.josena.padel.databinding.FragmentListLayoutBinding
-import me.josena.padel.databinding.FragmentMenuLayoutBinding
 import me.josena.padel.utils.Utils
 
-class FragmentList : Fragment() {
+class FragmentList() : Fragment() {
 
     private lateinit var binding: FragmentListLayoutBinding
 
@@ -73,18 +70,27 @@ class FragmentList : Fragment() {
             }
         }
     }
+
+    //Add booking
+    fun addBooking(booking: Booking) {
+        adapterBookings.addBooking(booking)
+    }
+
     //Deletes a booking
-    private fun deleteSelected(){
+    private fun deleteSelected() {
         adapterBookings.deleteCurrentSelected()
     }
+
     //Edits a booking
-    private fun modifySelected(){
+    private fun modifySelected() {
 
     }
+
     //Find a booking by name or date
-    private fun findBookings(){
+    private fun findBookings() {
 
     }
+
     //Launches a dialog to modify booking
     private fun showModifyDialog() {
 
