@@ -92,6 +92,7 @@
             android:cursorVisible="false"
             android:focusable="false"
             android:focusableInTouchMode="false"
+            android:inputType="date"
             android:hint="30/06/2023"/>
 
     </LinearLayout>
@@ -120,6 +121,7 @@
             android:cursorVisible="false"
             android:focusable="false"
             android:focusableInTouchMode="false"
+            android:inputType="datetime"
             android:hint="20:00" />
 
     </LinearLayout>

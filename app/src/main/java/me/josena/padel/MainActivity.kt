@@ -3,12 +3,14 @@ package me.josena.padel
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.widget.Toast
 import androidx.fragment.app.commit
 import me.josena.padel.data.Booking
 import me.josena.padel.databinding.ActivityMainBinding
 import me.josena.padel.fragments.FragmentBooking
 import me.josena.padel.fragments.FragmentList
 import me.josena.padel.fragments.FragmentMenu
+import me.josena.padel.utils.Utils
 
 class MainActivity : AppCompatActivity(), OnBookingPassed {
 
@@ -51,14 +53,6 @@ class MainActivity : AppCompatActivity(), OnBookingPassed {
     //Launches fragments
     private fun attachListFragment() {
 
-        val fragmentListListener = FragmentList().apply {
-            val addingListener = object : OnBookingAdded {
-                override fun onBookingAdded(booking: Booking) {
-                    addBooking(booking)
-                }
-            }
-        }
-
         supportFragmentManager.commit {
             setReorderingAllowed(true)//Let commit operations decide better operation's order
             replace(binding.fragmentContainerActivity.id, FragmentList.newInstance())
@@ -81,8 +75,9 @@ class MainActivity : AppCompatActivity(), OnBookingPassed {
 
     override fun onBookingPassed(booking: Booking) {
 
-        Log.d("Navio_Passed", "${booking.name}")
-        attachListFragment(booking)
+        Utils.MOCKED_LIST.add(booking)
+        attachListFragment()
+        Toast.makeText(this, "Reserva realizada", Toast.LENGTH_SHORT).show()
     }
 }
 

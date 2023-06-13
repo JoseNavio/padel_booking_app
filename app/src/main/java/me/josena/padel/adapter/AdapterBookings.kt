@@ -33,6 +33,10 @@ class AdapterBookings(private var bookings: MutableList<Booking>) :
         return bookings.size
     }
 
+    fun getCurrentSelected() : Int{
+        return selectedBooking
+    }
+
     fun updateBookings(updatedBookings: MutableList<Booking>) {
         bookings = updatedBookings
         notifyDataSetChanged()
@@ -51,13 +55,6 @@ class AdapterBookings(private var bookings: MutableList<Booking>) :
         notifyItemChanged(lastSelectedPosition) // Refresh the adapter for the previously selected item
         notifyItemChanged(selectedBooking) // Refresh the adapter for the currently selected item
     }
-    //Search
-    fun searchByName(){
-
-    }
-    fun searchByDate(){
-
-    }
     //Add
     fun addBooking(booking: Booking){
         bookings.add(booking)
@@ -69,15 +66,6 @@ class AdapterBookings(private var bookings: MutableList<Booking>) :
         if (selectedBooking != RecyclerView.NO_POSITION) {
             bookings.removeAt(selectedBooking)
             notifyItemRemoved(selectedBooking)
-            selectedBooking = RecyclerView.NO_POSITION
-        }
-    }
-    //Modify
-    fun modifyCurrentSelected() {
-
-        if (selectedBooking != RecyclerView.NO_POSITION) {
-            bookings.set(selectedBooking, Booking("","", "", "", ""))
-            notifyItemChanged(selectedBooking)
             selectedBooking = RecyclerView.NO_POSITION
         }
     }
